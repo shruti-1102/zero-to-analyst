@@ -256,7 +256,7 @@ values = [
     (106, 'Farah', 82, 'B', 'Delhi')
 ]
 
-myCursor.executemany(sql, values);
+# myCursor.executemany(sql, values);
 
 
 myCursor.execute("SELECT * from student");
