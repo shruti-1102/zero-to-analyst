@@ -106,7 +106,7 @@ myCursor = mydb.cursor();
 
 # myCursor.execute("CREATE DATABASE college");
 
-myCursor.execute("USE COLLEGE");
+# myCursor.execute("USE COLLEGE");
 
 # myCursor.execute("""
 #     CREATE TABLE student(
@@ -182,16 +182,17 @@ myCursor.execute("USE COLLEGE");
 #     )
 # """)
 
-sql = "INSERT INTO dept (id, name) VALUES (%s, %s)";
-values = [
-    (101, 'english'),
-    (102, 'IT')
-]
+# sql = "INSERT INTO dept (id, name) VALUES (%s, %s)";
+# values = [
+#     (101, 'english'),
+#     (102, 'IT')
+# ]
 
 # myCursor.executemany(sql, values);
 
 # myCursor.execute("SELECT * from dept");
 # tabs = myCursor.fetchall();
+# print("Rows fetched:", len(tabs))
 # for tab in tabs:
 #     print(tab)
 
@@ -214,5 +215,53 @@ values = [
 # myCursor.executemany(sql, values);
 # myCursor.execute("SELECT * from teacher");
 # tabs = myCursor.fetchall();
+# print("Rows fetched:", len(tabs))
 # for tab in tabs:
 #     print(tab)
+
+# myCursor.execute("DROP DATABASE IF EXISTS college");
+
+
+
+
+
+
+
+
+
+
+
+
+
+# myCursor.execute("CREATE DATABASE college");
+myCursor.execute("USE college");
+mydb.commit();
+
+# myCursor.execute("""
+#     CREATE TABLE student(
+#         rollno INT PRIMARY KEY,
+#         name VARCHAR(50),
+#         marks INT NOT NULL,
+#         grade VARCHAR(1),
+#         city VARCHAR(20))
+# """)
+
+sql = "INSERT INTO student (rollno, name, marks, grade, city) VALUES (%s, %s, %s, %s, %s)";
+values = [
+    (101, 'Anil', 78, 'C', 'Pune'),
+    (102, 'Bhoomika', 93, 'A', 'Mumbai'),
+    (103, 'Chetan', 85, 'B', 'Mumbai'),
+    (104, 'Dhruv', 96, 'A', 'Delhi'),
+    (105, 'Emanuel', 12, 'F', 'Delhi'),
+    (106, 'Farah', 82, 'B', 'Delhi')
+]
+
+myCursor.executemany(sql, values);
+
+
+myCursor.execute("SELECT * from student");
+rows = myCursor.fetchall();
+print("Rows fetched:", len(rows));
+for row in rows:
+    print(row)
+
