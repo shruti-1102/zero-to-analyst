@@ -117,20 +117,6 @@ myCursor.execute("USE COLLEGE");
 #         city VARCHAR(20))
 # """)
 
-# myCursor.execute("""
-#     CREATE TABLE dept(
-#     id INT PRIMARY KEY,
-#     name VARCHAR(50))
-# """)
-
-# myCursor.execute("""
-#     CREATE TABLE teacher(
-#         id INT PRIMARY KEY,
-#         name VARCHAR(50),
-#         dept_id INT,
-#         FOREIGN KEY (dept_id) REFERENCES dept(id))
-# """)
-
 # sql = "INSERT INTO student (rollno, name, marks, grade, city) VALUES (%s, %s, %s, %s, %s)";
 # values = [
 #     (101, 'Anil', 78, 'C', 'Pune'),
@@ -140,25 +126,6 @@ myCursor.execute("USE COLLEGE");
 #     (105, 'Emanuel', 12, 'F', 'Delhi'),
 #     (106, 'Farah', 82, 'B', 'Delhi')
 # ]
-
-
-sql = "INSERT INTO dept (id, name) VALUES (101, 'English')";
-myCursor.execute(sql);
-sql = "INSERT INTO dept (id, name) VALUES (102, 'IT')";
-myCursor.execute(sql);
-myCursor.execute("SELECT * from dept");
-rows = myCursor.fetchall();
-for row in rows:
-    print(row)
-
-sql = "INSERT INTO teacher (id, name,dept_id) VALUES (101, 'Adam', 101)";
-myCursor.execute(sql);
-sql = "INSERT INTO teacher (id, name, dept_id) VALUES (102, 'Eve', 102)";
-myCursor.execute(sql);
-myCursor.execute("SELECT * from teacher");
-rows = myCursor.fetchall();
-for row in rows:
-    print(row)
 
 
 # myCursor.execute("SELECT city, AVG(marks) from student GROUP BY city ORDER BY city DESC");
@@ -207,3 +174,45 @@ for row in rows:
 # rows = myCursor.fetchall();
 # for row in rows:
 #     print (row)
+
+# myCursor.execute("""
+#     CREATE TABLE dept(
+#         id INT PRIMARY KEY,
+#         name VARCHAR(50)
+#     )
+# """)
+
+sql = "INSERT INTO dept (id, name) VALUES (%s, %s)";
+values = [
+    (101, 'english'),
+    (102, 'IT')
+]
+
+# myCursor.executemany(sql, values);
+
+# myCursor.execute("SELECT * from dept");
+# tabs = myCursor.fetchall();
+# for tab in tabs:
+#     print(tab)
+
+# myCursor.execute("""
+#     CREATE TABLE teacher(
+#         id INT PRIMARY KEY,
+#         name VARCHAR(50),
+#         dept_id INT,
+#         FOREIGN KEY (dept_id) REFERENCES dept(id)
+#         ON UPDATE CASCADE
+#         ON DELETE CASCADE)
+# """)
+
+# sql = "INSERT INTO teacher (id, name, dept_id) VALUES (%s, %s, %s)";
+# values = [
+#     (101, 'Adam', 101),
+#     (102, 'Eve', 102)
+# ]
+
+# myCursor.executemany(sql, values);
+# myCursor.execute("SELECT * from teacher");
+# tabs = myCursor.fetchall();
+# for tab in tabs:
+#     print(tab)
