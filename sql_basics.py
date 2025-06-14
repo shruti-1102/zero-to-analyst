@@ -256,7 +256,7 @@ values = [
     (106, 'Farah', 82, 'B', 'Delhi')
 ]
 
-# myCursor.executemany(sql, values);
+myCursor.executemany(sql, values);
 
 
 myCursor.execute("SELECT * from student");
@@ -264,4 +264,3 @@ rows = myCursor.fetchall();
 print("Rows fetched:", len(rows));
 for row in rows:
     print(row)
-
