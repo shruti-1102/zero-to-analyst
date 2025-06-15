@@ -613,3 +613,86 @@ myCursor.execute("USE project_hub")
 # for row in results:
 #     print(row)
 
+# myCursor.execute("INSERT INTO employees (id, name, department_id, salary) VALUES (106, 'Nikhil', NULL, 48000)")
+# mydb.commit()
+
+# sql = """
+#     SELECT employees.name AS employee_name, departments.name AS department_name
+#     FROM employees
+#     LEFT JOIN departments
+#     ON employees.department_id = departments.id
+# """
+# myCursor.execute(sql)
+# results = myCursor.fetchall()
+# print("👥 All employees (LEFT JOIN):")
+# for row in results:
+#     print(row)
+
+# sql = """
+#     SELECT name FROM employees
+#     UNION
+#     SELECT employees.name FROM projects
+#     INNER JOIN employees ON projects.employee_id = employees.id
+# """
+# myCursor.execute(sql)
+# results = myCursor.fetchall()
+# print("🧑‍💻 Unique names of all employees & project leads:")
+# for row in results:
+#     print(row[0])
+
+# sql = """
+#     SELECT name, salary
+#     FROM employees
+#     WHERE salary > (
+#         SELECT AVG(salary) FROM employees
+#     )
+# """
+# myCursor.execute(sql)
+# rows = myCursor.fetchall()
+# print("💸 Employees earning more than average salary:")
+# for row in rows:
+#     print(row)
+
+# sql = """
+#     SELECT title 
+#     FROM projects
+#     WHERE employee_id = (
+#         SELECT id FROM employees
+#         ORDER BY salary DESC
+#         LIMIT 1
+#     )
+# """
+# myCursor.execute(sql)
+# rows = myCursor.fetchall()
+# print("🏆 Project of highest paid employee:")
+# for row in rows:
+#     print(row[0])
+
+# sql = """
+#     SELECT name, 
+#     (
+#         SELECT bonus
+#         FROM salaries
+#         WHERE salaries.employee_id = employees.id
+#     ) AS bonus
+#     FROM employees
+# """
+# myCursor.execute(sql)
+# rows = myCursor.fetchall()
+# print("🎁 Employees and their bonuses:")
+# for row in rows:
+#     print(row)
+
+
+# myCursor.execute("""
+#     CREATE VIEW high_earners AS
+#     SELECT name, salary FROM employees
+#     WHERE salary > 60000
+# """)
+# mydb.commit();
+# myCursor.execute("SELECT * FROM high_earners")
+# for row in myCursor.fetchall():
+#     print(row)
+
+
+# myCursor.execute("DROP VIEW IF EXISTS high_earners")
