@@ -183,3 +183,14 @@ myCursor.execute("USE freelancer_project")
 # mydb.commit()
 # print("✅ Sample data inserted!")
 
+
+sql = """
+    SELECT projects.title, clients.name AS name, clients.company, payments.status
+    FROM projects
+    JOIN clients ON projects.client_id = clients.id
+    JOIN payments ON projects.id = payments.project_id
+    WHERE payments.status = 'Pending'
+"""
+myCursor.execute(sql)
+for tab in myCursor.fetchall():
+    print(tab)
