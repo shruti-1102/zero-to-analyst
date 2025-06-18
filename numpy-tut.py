@@ -27,3 +27,9 @@ arr = np.arange(21)
 print(arr)
 print(arr.reshape(3, 7))                                   #returns sized array
 print(arr.ravel())                                         #undoes 
+
+x = [[1,2,3], [4,5,6], [7,1,0]]
+ar = np.array(x)
+print(ar)
+print(ar.sum(axis=0))                                      #axis=0 -> column wise sum. [1+4+7, 2+5+1, 3+6+0]
+print(ar.sum(axis=1))                                      #axis=1 -> row wise sum. [1+2+3, 4+5+6, 7+1+0]
