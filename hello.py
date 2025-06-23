@@ -200,7 +200,7 @@ with open("myFile.txt", "a") as f:                #writing into file
 with open("myFile.txt") as f:
    print(f.read())
 
-with open("myFile.txt", "w") as f:                #overwrite existing content
+with open("myFile.txt", "w") as f:                #overwrite existing contents
    f.write("Old content deleted!")
 
 with open("myFile.txt") as f:
