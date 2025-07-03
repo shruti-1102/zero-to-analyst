@@ -63,7 +63,7 @@ print(two.sum())
 print(two.max())
 print(two.min())
 
-print(np.where(two>5))                                     #returns array of indices where the condition is true
+print(np.where(two>5))                                     #returns array of indices where the condition is true.
 print(np.count_nonzero(two))                               #returns the count of the elements that are not zero
 
 arr = np.array([1, 2, 3, 4, 5])
