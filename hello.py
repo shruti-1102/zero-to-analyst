@@ -49,7 +49,7 @@ print(q[-15:-2])                                  #negative slicing
 print(q.upper())                                  #built in upper case method
 print(q.lower())                                  #lower case method
 print(q.strip())                                  #removes extra space before or after the text
-print(q.replace("p", "P"))                        #replaces string
+print(q.replace("p", "P"))                        #replaces strings
 print(q.split(","))                               #splits the string
 
 r = "Hey"
